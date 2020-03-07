@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateClienteRequest;
+use App\Models\Cliente;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -23,18 +26,24 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages/clientes/create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreUpdateClienteRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateClienteRequest $request)
     {
-        //
+        $dados = $request->except('_token');
+
+        $dados['dataNascimento'] = Carbon::createFromFormat('m/d/Y', $dados['dataNascimento'])->format('Y-m-d');
+
+        Cliente::create($dados);
+
+        return redirect()->route('clientes.index');
     }
 
     /**

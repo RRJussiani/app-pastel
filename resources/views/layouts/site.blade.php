@@ -20,10 +20,8 @@
 
         @include('includes/menu')
         
-        <div class="flex-center position-ref full-height">
-            <div class="content">
-                @yield('context')
-            </div>
+        <div class="content">
+            @yield('context')
         </div>
         
         @stack('script')

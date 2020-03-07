@@ -1,0 +1,24 @@
+form#formulario {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+form#formulario .form-group label {
+  float: left;
+}
+
+form#formulario button {
+  float: left;
+  margin: 10px 0;
+}
+
+section#cadastrar-cliente {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section#cadastrar-cliente .erros {
+  float: left;
+}
+
