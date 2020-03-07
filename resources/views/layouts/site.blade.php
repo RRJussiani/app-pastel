@@ -17,6 +17,9 @@
 
     </head>
     <body>
+
+        @include('includes/menu')
+        
         <div class="flex-center position-ref full-height">
             <div class="content">
                 @yield('context')
