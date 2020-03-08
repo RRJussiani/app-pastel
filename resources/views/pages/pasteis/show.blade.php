@@ -25,6 +25,11 @@
                 <p>
                     <strong>Preço:</strong> R$ {{ number_format($pastel->preco, 2, ',', '.') }}
                 </p>
+                </p>
+                <p>
+                    <strong>Descrição:</strong> <br>
+                    {{ $pastel->descricao }}
+                </p>
             </div>
         </div>
     </section>
