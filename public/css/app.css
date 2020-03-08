@@ -8,8 +8,8 @@ body {
   margin: 0;
 }
 
-html nav,
-body nav {
+html nav#menu-topo,
+body nav#menu-topo {
   padding: 10px 0;
   margin-bottom: 10px;
   border-bottom: 1px solid #e6e6e6;
@@ -37,6 +37,11 @@ html section .erros,
 body section .erros {
   float: left;
   text-align: left;
+}
+
+html section .table td,
+body section .table td {
+  vertical-align: middle;
 }
 
 html .full-height,

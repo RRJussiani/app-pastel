@@ -13,7 +13,6 @@
 
         <div class="clearfix"></div>
 
-        <div class="flex-center position-ref">
 
             <table class="table table-hover table-inverse">
                 <thead class="thead-inverse">
@@ -40,6 +39,5 @@
 
             {!! $clientes->links() !!}
 
-        </div>
     </section>
 @endsection

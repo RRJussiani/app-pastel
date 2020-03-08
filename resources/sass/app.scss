@@ -7,7 +7,7 @@ body {
   height: 100vh;
   margin: 0;
 
-  nav {
+  nav#menu-topo {
     padding: 10px 0;
     margin-bottom: 10px;
     border-bottom: 1px solid #e6e6e6;
@@ -28,6 +28,12 @@ body {
     .erros{
         float: left;
         text-align: left;
+    }
+
+    .table {
+      td {
+        vertical-align: middle;
+      }
     }
   }
 

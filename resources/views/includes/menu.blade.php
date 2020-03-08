@@ -1,4 +1,4 @@
-<nav>
+<nav id="menu-topo">
     <div class="flex-center">
         @if (Route::has('login'))
             <div class="top-right links">
