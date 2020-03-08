@@ -27,6 +27,12 @@ body section .btn-adicionar {
   margin: 0 0 10px;
 }
 
+html section .btn-excluir,
+body section .btn-excluir {
+  float: left;
+  margin: 10px 0;
+}
+
 html section .erros,
 body section .erros {
   float: left;

@@ -50,13 +50,3 @@
 <div class="clearfix"></div>
 
 <button type="submit" class="btn btn-success">Salvar</button>
-
-@isset($cliente)
-    <form action="{{ route('clientes.destroy', $cliente->id) }}" method="post">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">
-            Excluir
-        </button>
-    </form>
-@endisset
