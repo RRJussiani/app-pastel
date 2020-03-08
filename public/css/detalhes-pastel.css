@@ -1,0 +1,12 @@
+section#detalhes-pastel img {
+  float: right;
+}
+
+section#detalhes-pastel .info-pastel p {
+  text-align: left;
+}
+
+section#detalhes-pastel .info-pastel p strong {
+  font-weight: bold;
+}
+

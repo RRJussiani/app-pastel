@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('clientes', 'ClienteController');
+Route::resource('pasteis', 'PastelController');
 
 Route::get('/', 'HomeController@index')->name('home');

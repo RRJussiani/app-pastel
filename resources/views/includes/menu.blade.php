@@ -16,8 +16,8 @@
         <div class="top-left links">
             <a href="{{ route('home') }}">Home</a>
             <a href="{{ route('clientes.index') }}">Clientes</a>
-            {{-- <a href="{{ route('pasteis') }}">Pasteis</a>
-            <a href="{{ route('pedidos') }}">Pedidos</a> --}}
+            <a href="{{ route('pasteis.index') }}">Pastéis</a>
+            {{-- <a href="{{ route('pedidos') }}">Pedidos</a> --}}
         </div>
     </div>
 </nav>

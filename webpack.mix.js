@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/sass/formulario.scss', 'public/css');
+    .sass('resources/sass/formulario.scss', 'public/css')
+    .sass('resources/sass/detalhes-pastel.scss', 'public/css');
 
 
