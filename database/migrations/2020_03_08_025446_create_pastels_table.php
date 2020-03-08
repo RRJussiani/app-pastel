@@ -31,6 +31,6 @@ class CreatePastelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pastels');
+        Schema::dropIfExists('pasteis');
     }
 }
