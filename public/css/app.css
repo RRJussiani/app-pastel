@@ -8,45 +8,66 @@ body {
   margin: 0;
 }
 
-nav {
+html nav,
+body nav {
   padding: 10px 0;
   margin-bottom: 10px;
   border-bottom: 1px solid #e6e6e6;
 }
 
-.full-height {
+html section,
+body section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+html section .btn-adicionar,
+body section .btn-adicionar {
+  float: left;
+  margin: 0 0 10px;
+}
+
+html .full-height,
+body .full-height {
   height: calc(100vh - 163px);
 }
 
-.flex-center {
+html .flex-center,
+body .flex-center {
   align-items: center;
   display: flex;
   justify-content: center;
 }
 
-.position-ref {
+html .position-ref,
+body .position-ref {
   position: relative;
 }
 
-.top-right {
+html .top-right,
+body .top-right {
   position: absolute;
   right: 10px;
   top: 18px;
 }
 
-.content {
+html .content,
+body .content {
   text-align: center;
 }
 
-.title {
+html .title,
+body .title {
   font-size: 84px;
 }
 
-h1 {
+html h1,
+body h1 {
   margin: 30px 0;
 }
 
-.links > a {
+html .links > a,
+body .links > a {
   color: #636b6f;
   padding: 0 25px;
   font-size: 13px;
@@ -56,7 +77,8 @@ h1 {
   text-transform: uppercase;
 }
 
-.m-b-md {
+html .m-b-md,
+body .m-b-md {
   margin-bottom: 30px;
 }
 
