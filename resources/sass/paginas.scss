@@ -1,0 +1,41 @@
+html,
+body {
+
+  section {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .btn-adicionar{
+      float: left;
+      margin: 0 0 10px;
+    } 
+    .btn-excluir{
+      float: left;
+      margin: 10px 0;        
+    }
+    .erros{
+        float: left;
+        text-align: left;
+    }
+
+    .table {
+      td {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .full-height {
+    height: calc(100vh - 163px);
+  }
+
+  .title-home {
+    font-size: 84px;
+    position: relative;
+  }
+  
+  h1 {
+    margin: 30px 0;
+  }
+  
+}

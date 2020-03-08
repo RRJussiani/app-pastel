@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
+use App\Models\Pastel;
 use App\Models\Pedido;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PedidoController extends Controller
 {
@@ -29,7 +32,14 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        //
+        $clientes = DB::table('clientes')->select('id', 'nome')->get();
+        $pasteis = DB::table('pasteis')->select('id', 'nome')->get();
+
+        return view('pages.pedidos.create', [
+            'clientes' => $clientes,
+            'pasteis' => $pasteis,
+            'titulo' => 'Fazer pedido'
+        ]);
     }
 
     /**
