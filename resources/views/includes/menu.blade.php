@@ -1,23 +1,24 @@
-<nav id="menu-topo">
-    <div class="flex-center">
-        @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
-                    <a href="{{ url('/home') }}">Home</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            {{ config('app.name', 'Laravel') }}
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-        <div class="top-left links">
-            <a href="{{ route('home') }}">Home</a>
-            <a href="{{ route('clientes.index') }}">Clientes</a>
-            <a href="{{ route('pasteis.index') }}">Pastéis</a>
-            <a href="{{ route('pedidos.index') }}">Pedidos</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pasteis.index') }}">Pastéis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pedidos.index') }}">Pedidos</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

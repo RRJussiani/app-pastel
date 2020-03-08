@@ -3,8 +3,8 @@
 @section('titulo-pagina', 'Home')
 
 @section('context')
-    <div class="flex-center position-ref full-height">
-        <div class="title m-b-md">
+    <div class="d-flex justify-content-center align-items-center full-height">
+        <div class="title-home m-b-md">
             Bem vindo
         </div>  
     </div>
