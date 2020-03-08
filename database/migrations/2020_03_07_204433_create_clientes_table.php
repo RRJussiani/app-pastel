@@ -23,6 +23,7 @@ class CreateClientesTable extends Migration
             $table->string('bairro')->nullable();
             $table->string('complemento')->nullable();
             $table->string('cep')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

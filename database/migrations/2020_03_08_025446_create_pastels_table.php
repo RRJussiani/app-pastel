@@ -18,6 +18,8 @@ class CreatePastelsTable extends Migration
             $table->string('nome')->unique();
             $table->double('preco', 10, 2);
             $table->string('foto')->nullable();
+            $table->text('descricao')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
