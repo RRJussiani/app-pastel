@@ -27,6 +27,12 @@ body section .btn-adicionar {
   margin: 0 0 10px;
 }
 
+html section .erros,
+body section .erros {
+  float: left;
+  text-align: left;
+}
+
 html .full-height,
 body .full-height {
   height: calc(100vh - 163px);

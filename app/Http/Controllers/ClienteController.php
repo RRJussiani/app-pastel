@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +20,8 @@ class ClienteController extends Controller
         $clientes = Cliente::paginate();
 
         return view('pages.clientes.index', [
-            'clientes' => $clientes
+            'clientes' => $clientes,
+            'titulo' => 'Clientes'
         ]);
     }
 
@@ -30,7 +32,9 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('pages.clientes.create');
+        return view('pages.clientes.create', [
+            'titulo' => 'Cadastrar Cliente'
+        ]);
     }
 
     /**
@@ -41,11 +45,11 @@ class ClienteController extends Controller
      */
     public function store(StoreUpdateClienteRequest $request)
     {
-        $dados = $request->except('_token');
+        $dadosRequest = $request->except('_token');
 
-        $dados['dataNascimento'] = Carbon::createFromFormat('m/d/Y', $dados['dataNascimento'])->format('Y-m-d');
+        $dadosRequest['dataNascimento'] = Carbon::createFromFormat('m/d/Y', $dadosRequest['dataNascimento'])->format('Y-m-d');
 
-        Cliente::create($dados);
+        Cliente::create($dadosRequest);
 
         return redirect()->route('clientes.index');
     }
@@ -69,7 +73,18 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cliente = Cliente::find($id);
+
+        if (!$cliente){
+            return redirect()->back();
+        }
+
+        $cliente['dataNascimento'] = Carbon::createFromFormat('Y-m-d', $cliente['dataNascimento'])->format('m/d/Y');
+
+        return view('pages.clientes.edit', [
+            'cliente' => $cliente,
+            'titulo' => 'Editar Cliente'
+        ]);
     }
 
     /**
@@ -79,9 +94,21 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateClienteRequest $request, $id)
     {
-        //
+        $cliente = Cliente::find($id);
+
+        if (!$cliente){
+            return redirect()->back();
+        }
+
+        $dadosRequest = $request->all();
+
+        $dadosRequest['dataNascimento'] = Carbon::createFromFormat('m/d/Y', $dadosRequest['dataNascimento'])->format('Y-m-d');
+
+        $cliente->update($dadosRequest);
+
+        return redirect()->route('clientes.index');
     }
 
     /**
@@ -92,6 +119,14 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cliente = Cliente::find($id);
+
+        if (!$cliente){
+            return redirect()->back();
+        }
+
+        $cliente->delete();
+
+        return redirect()->route('clientes.index');
     }
 }

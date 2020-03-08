@@ -17,10 +17,11 @@
 
     <div class="flex-center position-ref">
 
-        <form action="{{ route('clientes.store') }}" method="post" id="formulario">
+        <form action="{{ route('clientes.update', $cliente->id) }}" method="post" id="formulario">
+            @method('PUT')
             @include('pages.clientes._partials.form')
         </form>
-        
+
     </div>
 </section>
     

@@ -1,11 +1,11 @@
 @extends('layouts/site')
 
-@section('titulo-pagina', 'Clientes')
+@section('titulo-pagina', $titulo)
 
 @section('context')
     <section id="clientes">
         
-        <h1>Clientes</h1>
+        <h1>{{ $titulo }}</h1>
         
         <a href="{{ route('clientes.create') }}" class="btn btn-info btn-adicionar" title="Cadastrar">
             Cadastrar
