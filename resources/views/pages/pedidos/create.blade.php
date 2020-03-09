@@ -22,23 +22,11 @@
                 <div class="col-6">
                     @csrf
                     <div class="form-group">
-                        <label for="idCliente">Cliente</label>
-                        <select class="form-control" name="idCliente" id="idCliente">
-                            <option>Selecione um cliente</option>
+                        <label for="cliente_id">Cliente</label>
+                        <select class="form-control" name="cliente_id" id="cliente_id">
+                            <option value="">Selecione um cliente</option>
                             @foreach ($clientes as $cliente)
-                                <option value="{{ old('idCliente') }}">{{ $cliente->nome }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="col-6">    
-                    <div class="form-group">
-                        <label for="idPastel">Pastel</label>
-                        <select class="form-control" name="idPastel" id="idPastel">
-                            <option>Selecione o pastel</option>
-                            @foreach ($pasteis as $pastel)
-                                <option value="{{ old('idPastel') }}">{{ $pastel->nome }}</option>
+                                <option value="{{ old('cliente_id') ?? $cliente->id }}">{{ $cliente->nome }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -49,6 +37,37 @@
                         <label for="observacao">Observação</label>
                         <textarea class="form-control" name="observacao" id="observacao" rows="3">{{ old('observacao') }}</textarea>
                     </div>
+                </div>                
+
+                <div class="col-12">
+                    <table class="table table-hover table-inverse">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th width="200"></th>
+                                <th>Nome</th>
+                                <th>Preço Unit.</th>
+                                <th width="100">Quant.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($pasteis as $pastel)
+                                <tr>
+                                    <td scope="row"><img src='{{ url("storage/$pastel->foto") }}' alt="{{ $pastel->nome }}" width="100"/></td>
+                                    <td>
+                                        {{ $pastel->nome }}
+                                        <input type="hidden" class="form-control" name="pasteis[{{ $loop->index }}][pastel_id]" id="pasteis[{{ $loop->index }}][pastel_id]" value="{{ $pastel->id }}"/>
+                                    </td>
+                                    <td>
+                                        R$ {{ number_format($pastel->preco, 2, ',', '.') }}
+                                        <input type="hidden" class="form-control" name="pasteis[{{ $loop->index }}][preco]" id="pasteis[{{ $loop->index }}][preco]" value="{{ $pastel->preco }}"/>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" name="pasteis[{{ $loop->index }}][quantidade]" id="pasteis[{{ $loop->index }}][quantidade]" min="0" value='{{ old("pasteis.$loop->index.quantidade") ?? 0 }}'>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
@@ -60,5 +79,4 @@
         
     </div>
 </section>
-    
 @endsection

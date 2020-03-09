@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Pedido extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['idCliente', 'total', 'observacao'];
+    protected $fillable = ['cliente_id', 'total', 'observacao'];
 
-    public function pasteis() {
-        return $this->morphMany('Models\PedidoPastel', 'pasteis');
+    public function pasteisPedido() {
+        return $this->hasMany(PedidoPastel::class);
     }
 
     public function cliente() {
-        return $this->morphOne('Models\Cliente', 'cliente');
+        return $this->belongsTo(Cliente::class);
     }
 }

@@ -15,10 +15,10 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idCliente');
+            $table->unsignedBigInteger('cliente_id');
             $table->double('total', 10, 2);
             $table->text('observacao')->nullable();
-            $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade');
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

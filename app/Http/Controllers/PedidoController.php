@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PedidoStoreRequest;
 use App\Models\Cliente;
 use App\Models\Pastel;
 use App\Models\Pedido;
+use App\Models\PedidoPastel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,7 +35,7 @@ class PedidoController extends Controller
     public function create()
     {
         $clientes = DB::table('clientes')->select('id', 'nome')->get();
-        $pasteis = DB::table('pasteis')->select('id', 'nome')->get();
+        $pasteis = Pastel::all();
 
         return view('pages.pedidos.create', [
             'clientes' => $clientes,
@@ -45,12 +47,32 @@ class PedidoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\PedidoStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PedidoStoreRequest $request)
     {
-        //
+        $pedido = $request->only(['cliente_id', 'observacao']);
+        $pasteis = $request->input('pasteis');
+        $pasteisValidos = [];
+        $pedido['total'] = 0.00;
+
+        foreach ($pasteis as $pastel) {
+            if($pastel['quantidade']){
+                $pedido['total'] += $pastel['preco'] * $pastel['quantidade'];
+                $pasteisValidos[] = $pastel;
+            }
+        }
+
+        $idPedido = Pedido::create($pedido)->id;
+
+        foreach ($pasteisValidos as $indice => $pastel) {
+            $pastel['pedido_id'] = $idPedido;
+            PedidoPastel::create($pastel);
+        }
+
+        return redirect()->route('pedidos.index');
+
     }
 
     /**
@@ -61,7 +83,16 @@ class PedidoController extends Controller
      */
     public function show($id)
     {
-        //
+        $pedido = Pedido::find($id);
+
+        foreach($pedido->pasteisPedido as $pastelPedido){
+            $pastelPedido->pastel = Pastel::find($pastelPedido->pastel_id);
+        }
+
+        return view('pages.pedidos.show', [
+            'pedido' => $pedido,
+            'titulo' => 'Detalhes do pedido'
+        ]);
     }
 
     /**

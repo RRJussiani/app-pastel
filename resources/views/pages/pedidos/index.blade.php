@@ -7,7 +7,7 @@
         
         <h1>{{ $titulo }}</h1>
         
-        <a href="{{ route('pedidos.create') }}" class="btn btn-info btn-adicionar" title="Fazer pedido">
+        <a href="{{ route('pedidos.create') }}" class="btn btn-primary btn-adicionar" title="Fazer pedido">
             Fazer pedido
         </a>
 
@@ -19,13 +19,13 @@
                         <th>Pedido</th>
                         <th>Cliente</th>
                         <th>Total</th>
-                        <th></th>
+                        <th width="100"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($pedidos as $pedido)
                         <tr>
-                            <td scope="row">{{ $pedido->id }}</td>
+                            <td scope="row">#{{ $pedido->id }}</td>
                             <td>{{ $pedido->cliente->nome }}</td>
                             <td>R$ {{ number_format($pedido->total, 2, ',', '.') }}</td>
                             <td>

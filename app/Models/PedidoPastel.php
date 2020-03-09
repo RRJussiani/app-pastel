@@ -9,5 +9,9 @@ class PedidoPastel extends Model
 {
     use SoftDeletes;
     protected $table = 'pedidos_pasteis';
-    protected $fillable = ['idPedido'];
+    protected $fillable = ['pedido_id', 'pastel_id', 'quantidade'];
+    
+    public function pastel () {
+        return $this->hasOneThrough(PedidoPastel::class, Pastel::class, 'id', 'pastel_id');
+    }
 }

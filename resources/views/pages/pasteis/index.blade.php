@@ -12,10 +12,10 @@
         <table class="table table-hover table-inverse">
             <thead class="thead-inverse">
                 <tr>
-                    <th></th>
+                    <th width="200"></th>
                     <th>Nome</th>
                     <th>Preço</th>
-                    <th></th>
+                    <th width="100"></th>
                 </tr>
             </thead>
             <tbody>

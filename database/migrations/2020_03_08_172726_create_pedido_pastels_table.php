@@ -15,8 +15,11 @@ class CreatePedidoPastelsTable extends Migration
     {
         Schema::create('pedidos_pasteis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idPedido');
-            $table->foreign('idPedido')->references('id')->on('pedidos')->onDelete('cascade');
+            $table->unsignedBigInteger('pedido_id');
+            $table->unsignedBigInteger('pastel_id');
+            $table->integer('quantidade');
+            $table->foreign('pedido_id')->references('id')->on('pedidos')->onDelete('cascade');
+            $table->foreign('pastel_id')->references('id')->on('pasteis')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -7,7 +7,7 @@
         
         <h1>{{ $titulo }}</h1>
         
-        <a href="{{ route('clientes.create') }}" class="btn btn-info btn-adicionar" title="Cadastrar">
+        <a href="{{ route('clientes.create') }}" class="btn btn-primary btn-adicionar" title="Cadastrar">
             Cadastrar
         </a>
 
@@ -19,7 +19,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>Email</th>
-                        <th></th>
+                        <th width="100"></th>
                     </tr>
                 </thead>
                 <tbody>
