@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PedidoStoreRequest;
+use App\Mail\PedidoMail;
 use App\Models\Cliente;
 use App\Models\Pastel;
 use App\Models\Pedido;
 use App\Models\PedidoPastel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class PedidoController extends Controller
 {
@@ -71,8 +73,19 @@ class PedidoController extends Controller
             PedidoPastel::create($pastel);
         }
 
-        return redirect()->route('pedidos.index');
+        $this->enviarEmailPedido($idPedido);
 
+        return redirect()->route('pedidos.index');
+    }
+
+    private function enviarEmailPedido($idPedido){
+        $pedido = Pedido::find($idPedido);
+
+        foreach($pedido->pasteisPedido as $pastelPedido){
+            $pastelPedido->pastel = Pastel::find($pastelPedido->pastel_id);
+        }
+
+        Mail::to('rr.jussiani@live.com')->send(new PedidoMail(config('app.name')." - Pedido #$idPedido", $pedido));
     }
 
     /**
