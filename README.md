@@ -9,7 +9,8 @@ Baixe o projeto clonando do repositório utilizando o seguinte comando:
 ```bash
 git clone https://github.com/RRJussiani/app-pastel.git
 ```
-Após clonar o projeto, é necessário executar o composer e o npm dentro da pasta do projeto.
+Após clonar o projeto, é necessário executar o composer e o npm **dentro da pasta do projeto**.
+Para que o comando abaixo seja executado e necessário ter instalado o **[Composer](https://getcomposer.org/)** e o **[Node.js](https://nodejs.org/en/)** em seu computador.
 
 ```bash
 composer install
@@ -21,6 +22,7 @@ Na pasta do projeto, antes de começar fazer as configurações execute o seguin
 
 ```bash
 cp .env.example .env
+php artisan key:generate
 ```
 Com isso será gerado o arquivo .env, onde você terá que configurar o banco de dados do projeto.
 - DB_HOST=127.0.0.1
@@ -40,16 +42,18 @@ E além do banco de dados, é necessário configurar os emails de SMTP, para que
 
 ## Gerar dados
 
-Nessa etapa é necessário que o banco já esteja criado em seu servidor e configurado conforme foi citado acima.
-Se tudo estiver OK na pasta do projeto execute o seguinte comando para subir as tabelas do projeto.
+Antes de prosseguir, crie o banco de dados seguindo com o mesmo nome que foi configurado no arquivo **.env** e selecionando a collation: **utf8mb4_unicode_ci**.
+
+Na pasta do projeto execute o seguinte comando para subir as tabelas do projeto e gerar dados para as tabelas:
 
 ```bash
 php artisan migrate
+php artisan db:seed
 ```
-Após subir as migrations, execute o seguinte comando das Seeders
+Após subir as migrations e seeders, execute o seguinte comando para gerar o link das imagens dos pastéis.
 
 ```bash
-php artisan db:seed
+php artisan storage:link
 ```
 
 ## Gerar css e js
