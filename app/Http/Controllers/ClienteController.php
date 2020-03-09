@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUpdateClienteRequest;
+use App\Http\Requests\ClienteStoreUpdateRequest;
 use App\Models\Cliente;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -40,10 +40,10 @@ class ClienteController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUpdateClienteRequest  $request
+     * @param  \App\Http\Requests\ClienteStoreUpdateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdateClienteRequest $request)
+    public function store(ClienteStoreUpdateRequest $request)
     {
         $dadosRequest = $request->except('_token');
 
@@ -90,11 +90,11 @@ class ClienteController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ClienteStoreUpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdateClienteRequest $request, $id)
+    public function update(ClienteStoreUpdateRequest $request, $id)
     {
         $cliente = Cliente::find($id);
 

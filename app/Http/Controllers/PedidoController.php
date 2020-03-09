@@ -85,7 +85,7 @@ class PedidoController extends Controller
             $pastelPedido->pastel = Pastel::find($pastelPedido->pastel_id);
         }
 
-        Mail::to('rr.jussiani@live.com')->send(new PedidoMail(config('app.name')." - Pedido #$idPedido", $pedido));
+        Mail::to($pedido->cliente->email)->send(new PedidoMail(config('app.name')." - Pedido #$idPedido", $pedido));
     }
 
     /**
