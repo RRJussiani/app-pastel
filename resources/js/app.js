@@ -10,10 +10,11 @@ window.Vue = require('vue');
 
 import Vue from 'vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import VueTheMask from 'vue-the-mask'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
-
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+Vue.use(VueTheMask)
 
 /**
  * The following block of code may be used to automatically register your

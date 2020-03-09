@@ -13,12 +13,12 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-8">
-                    <label for="telefone">Telefone</label>
-                    <input type="text" class="form-control" name="telefone" id="telefone" value="{{ $cliente->telefone ?? old('telefone') }}">
+                    <label for="telefone">Telefone/Celular</label>
+                    <the-mask :mask="['(##) ####-####', '(##) #####-####']" type="text" class="form-control" name="telefone" id="telefone" value="{{ $cliente->telefone ?? old('telefone') }}">
                 </div>
                 <div class="col-4">
                     <label for="dataNascimento">Data de nascimento</label>
-                    <input type="text" class="form-control" name="dataNascimento" value="{{ $cliente->dataNascimento ?? old('dataNascimento') }}">
+                    <the-mask :mask="['##/##/####']" type="text" class="form-control" name="dataNascimento" value="{{ $cliente->dataNascimento ?? old('dataNascimento') }}">
                 </div>
             </div>
         </div>            
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-4">
                     <label for="cep">CEP</label>
-                    <input type="text" class="form-control" name="cep" id="cep" value="{{ $cliente->cep ?? old('cep') }}">
+                    <the-mask :mask="['#####-###']" type="text" class="form-control" name="cep" id="cep" value="{{ $cliente->cep ?? old('cep') }}">
                 </div>
             </div>
         </div>
